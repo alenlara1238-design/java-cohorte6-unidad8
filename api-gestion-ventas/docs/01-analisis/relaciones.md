@@ -12,5 +12,5 @@ Venta   ----- Detalle-Venta ----- Producto
   id-venta
   id-producto
   cantidad
-  precio-historico (precio del producto al momento de la venta)
+  precio-unitario (precio del producto al momento de la venta)
   
