@@ -4,9 +4,12 @@ import com.dev.senior.service.*;
 import com.dev.senior.dto.*;
 import com.dev.senior.model.*;
 
+import java.util.List;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -42,5 +45,26 @@ public class UsuarioController {
        return ResponseEntity.status(HttpStatus.CREATED).body(response);
 
     }
+
+    @GetMapping 
+    public ResponseEntity<List<UsuarioResponse>> listar(){
+        List<UsuarioResponse> usuarios = usuarioService.listarTodos()
+                                            .stream()
+                                            .map(usuario -> new UsuarioResponse(
+                                                usuario.getId(),
+                                                usuario.getNombre(),
+                                                usuario.getCorreo(),
+                                                usuario.getRol().name()
+                                            )).toList();
+        
+        return ResponseEntity.ok(usuarios);
+    }
+
+    
+
+
+
+
+
 
 }
