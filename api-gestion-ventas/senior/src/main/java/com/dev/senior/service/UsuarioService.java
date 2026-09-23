@@ -16,6 +16,10 @@ public class UsuarioService {
         this.usuarioRepository = usuarioRepository;
     }
 
+    public Usuario guardar(Usuario usuario){
+        return usuarioRepository.save(usuario);
+    }
+
     public List<Usuario> listarTodos(){
         return usuarioRepository.findAll();
     }
